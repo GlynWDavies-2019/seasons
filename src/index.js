@@ -1,32 +1,32 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
-// import SeasonDisplay from './SeasonDisplay';
-
 class App extends Component {
-    render() {
+    constructor(props) {
+        super(props);
+        this.state = {
+            latitude: null,
+            errorMessage: ''
+        };
         window.navigator.geolocation.getCurrentPosition(
-            (position) => console.log(position),
-            (error) => console.log(error)  
+            (position) => this.setState({
+                latitude: position.coords.latitude
+            }),
+            (error) => this.setState({
+                errorMessage: error.message
+            }) 
         );
-        return (
-            <div>
-                Latitude: 
-            </div>
-        )}
+    } 
+    render() {
+        let jsx = (<div>Loading...</div>);
+        if(this.state.latitude) {
+            jsx = (<div>Latitude: {this.state.latitude}</div>);
+        }
+        if(this.state.errorMessage) {
+            jsx = (<div>Error: {this.state.errorMessage}</div>);
+        }
+        return jsx;
+    }
 }
-
-// const App = () => {
-//     window.navigator.geolocation.getCurrentPosition(
-//         (position) => console.log(position),
-//         (error) => console.log(error)  
-//     );
-//     return (
-//         <div>
-//             Seasons App
-//             <SeasonDisplay />
-//         </div>
-//     );
-// }
 
 ReactDOM.render(<App />, document.querySelector('#root'));
