@@ -1,0 +1,34 @@
+.icon-left {
+    left: 10px;
+    position: absolute;
+    top: 10px;
+}
+
+.icon-right {
+    bottom: 10px;
+    position: absolute;
+    right: 10px;
+}
+
+.season-display {
+    align-items: center;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+}
+
+.summer {
+    background-color: #FFA500;
+}
+
+.winter {
+    background-color: #F0F8FF;
+}
+
+.season-display.winter i {
+    color: #0000FF;
+}
+
+.season-display.summer i {
+    color: #FF0000;
+}
