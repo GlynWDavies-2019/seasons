@@ -24,7 +24,9 @@ const getSeason = (latitude,month) => {
 
 const SeasonDisplay = (props) => {
     const season = getSeason(props.latitude,new Date().getMonth());
+    // Destructuring...
     const { text, iconName } = seasonConfig[season];
+    // ...
     return (
             <div className={`season-display ${season}`}>
                 <i className={`icon-left massive ${iconName} icon`} />
