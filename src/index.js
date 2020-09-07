@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
 import SeasonDisplay from './SeasonDisplay';
+import Spinner from './Spinner';
 
 class App extends Component {
     state = {
@@ -15,7 +16,7 @@ class App extends Component {
         );
     }
     render() {
-        let jsx = (<div>Loading...</div>);
+        let jsx = (<Spinner />);
         if(this.state.latitude) {
             jsx = (
                 <SeasonDisplay latitude={this.state.latitude} />
